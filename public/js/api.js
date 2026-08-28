@@ -38,11 +38,11 @@ export const apiClient = {
     // },
 
     // // 5. DELETE
-    // async deleteBean(id) {
-    //     console.log(`API: Deleting bean ${id}`);
-    //     const index = mockBeans.findIndex(b => b.id === id);
-    //     if (index > -1) mockBeans.splice(index, 1);
-    // },
+   async deleteBean(id) {
+    const res = await fetch(`${API_BASE}/beans/${id}` , { method: 'DELETE' });
+        if (!res.ok) throw new Error(`Failed to delete bean: ${id}`);
+    },
+   
 
     // // 6. LOCALIZATION
     // async getTranslations(lang) {
