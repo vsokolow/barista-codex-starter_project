@@ -5,4 +5,5 @@ export const beansRouter = Router()
 
 beansRouter.get('/', controller.getAllBeans)
 beansRouter.get('/:id', controller.getBeanById)
+beansRouter.post('/', controller.createBean)
 beansRouter.delete('/:id', controller.deleteBean)

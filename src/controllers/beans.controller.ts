@@ -16,6 +16,21 @@ export async function getBeanById(req: Request<{ id: string }>, res: Response) {
   }
 }
 
+// ===== CREATE =====
+
+export async function createBean(req: Request, res: Response) {
+  try {
+    const bean = await service.create(req.body)
+    res.status(201).json(bean)
+  } catch (e) {
+    if (e instanceof Error && e.message === 'VALIDATION_ERROR') {
+      res.status(400).json({ message: 'title and country are required' })
+      return
+    }
+    throw e
+  }
+}
+
 // ===== DELETE =====
 
 export async function deleteBean(req: Request<{ id: string }>, res: Response) {

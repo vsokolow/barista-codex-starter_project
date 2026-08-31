@@ -19,6 +19,14 @@ export async function findById(id: string): Promise<Bean | null> {
   return (await findAll()).find(b => b.id === id) ?? null
 }
 
+// ======== CREATE =========
+
+export async function create(bean: Bean): Promise<Bean> {
+  const fullPath = path.join(DATA_DIR, `${bean.id}.json`)
+  await fs.writeFile(fullPath, JSON.stringify(bean, null, 2), 'utf-8')
+  return bean
+}
+
 // ======== DELETE =========
 
 async function findFileById(id: string): Promise<string | null> { // не экспортируется = private
