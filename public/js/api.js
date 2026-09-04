@@ -45,8 +45,9 @@ export const apiClient = {
    
 
     // // 6. LOCALIZATION
-    // async getTranslations(lang) {
-    //     // Возвращаем пустой объект, пока нет бэкенда, чтобы не было ошибок 404
-    //     return {};
-    // }
+    async getTranslations(lang) {
+        const res = await fetch(`${API_BASE}/i18n/${lang}`);
+        if (!res.ok) return {}; // Возвращаем пустой объект, пока нет бэкенда, чтобы не было ошибок 404
+        return res.json();
+    }
 };

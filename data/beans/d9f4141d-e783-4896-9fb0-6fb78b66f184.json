@@ -1,0 +1,45 @@
+{
+  "id": "d9f4141d-e783-4896-9fb0-6fb78b66f184",
+  "title": "Test Ethiopia Guji",
+  "country": "Ethiopia",
+  "description": "Floral, tea-like, bergamot",
+  "roasterComment": "",
+  "imageUrl": "",
+  "details": {
+    "process": "",
+    "region": "",
+    "variety": [],
+    "scaScore": 0
+  },
+  "flavorProfile": {
+    "notes": [],
+    "acidity": 0,
+    "sweetness": 0,
+    "bitterness": 0
+  },
+  "recipes": [
+    {
+      "id": "0ed036a9-a042-4979-849e-481267d3cfca",
+      "method": "V60",
+      "grindSize": "EK43 - 8.5",
+      "waterTemp": 96,
+      "doseIn": 18,
+      "doseOut": 300,
+      "timeTotal": "3:00",
+      "steps": [
+        "0:00 - Bloom 60g",
+        "0:45 - Pour to 300g"
+      ]
+    },
+    {
+      "id": "7568e659-e3c0-4927-9680-3da1cecb609f",
+      "method": "Espresso",
+      "grindSize": "Mythos - 3.8",
+      "waterTemp": 93,
+      "doseIn": 18,
+      "doseOut": 36,
+      "timeTotal": "28s",
+      "steps": []
+    }
+  ]
+}
