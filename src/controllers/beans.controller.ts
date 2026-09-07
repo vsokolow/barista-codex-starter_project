@@ -31,6 +31,21 @@ export async function createBean(req: Request, res: Response) {
   }
 }
 
+// ===== UPDATE =====
+
+export async function updateBean(req: Request<{ id: string }>, res: Response) {
+  try {
+    const bean = await service.update(req.params.id, req.body)
+    res.json(bean)
+  } catch (e) {
+    if (e instanceof Error && e.message === 'NOT_FOUND') {
+      res.status(404).json({ message: 'Bean not found' })
+      return
+    }
+    throw e
+  }
+}
+
 // ===== DELETE =====
 
 export async function deleteBean(req: Request<{ id: string }>, res: Response) {

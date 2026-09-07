@@ -16,7 +16,7 @@ app.use(express.json())
 app.use(express.static(path.join(process.cwd(), 'public')))
 
 app.use('/api/beans', beansRouter)
-app.use('api/18n', i18nRouter)
+app.use('/api/i18n', i18nRouter)
 
 
 app.listen(PORT, () => console.log(`http://localhost:${PORT}`))

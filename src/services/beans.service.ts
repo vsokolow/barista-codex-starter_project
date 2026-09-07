@@ -68,6 +68,22 @@ export async function create(input: Partial<Bean>): Promise<Bean> {
 
 
 
+// ===== UPDATE =====
+
+export async function update(id: string, input: Partial<Bean>): Promise<Bean> {
+  const existing = await repo.findById(id)
+  if (!existing) throw new Error('NOT_FOUND')
+
+  const bean: Bean = {
+    ...existing,
+    ...input,
+    id: existing.id,
+    recipes: input.recipes ?? existing.recipes,
+  }
+
+  return (await repo.update(id, bean)) as Bean
+}
+
 // ===== DELETE =====
 
 export async function remove(id: string): Promise<void> {

@@ -27,8 +27,6 @@ export async function create(bean: Bean): Promise<Bean> {
   return bean
 }
 
-// ======== DELETE =========
-
 async function findFileById(id: string): Promise<string | null> { // не экспортируется = private
   const files = await fs.readdir(DATA_DIR)
   for (const f of files) {
@@ -39,6 +37,17 @@ async function findFileById(id: string): Promise<string | null> { // не экс
   }
   return null
 }
+
+// ======== UPDATE =========
+
+export async function update(id: string, bean: Bean): Promise<Bean | null> {
+  const fullPath = await findFileById(id)
+  if (!fullPath) return null
+  await fs.writeFile(fullPath, JSON.stringify(bean, null, 2), 'utf-8')
+  return bean
+}
+
+// ======== DELETE =========
 
 export async function remove(id: string): Promise<boolean> {
   const fullPath = await findFileById(id)

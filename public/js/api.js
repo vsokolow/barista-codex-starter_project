@@ -25,17 +25,27 @@ export const apiClient = {
     },
 
 
-    // // 3. CREATE
-    // async createBean(beanData) {
-    //     console.log('API: Creating bean...', beanData);
-    //     mockBeans.push({ ...beanData, id: String(Date.now()), recipes: [] });
-    // },
+    // 3. CREATE
+    async createBean(beanData) {
+        const res = await fetch(`${API_BASE}/beans`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(beanData),
+        });
+        if (!res.ok) throw new Error('Failed to create bean');
+        return res.json();
+    },
 
-    // // 4. UPDATE
-    // async updateBean(id, beanData) {
-    //     console.log(`API: Updating bean ${id}...`, beanData);
-    //     // Mock update logic needed for full test, but console log is enough for now
-    // },
+    // 4. UPDATE
+    async updateBean(id, beanData) {
+        const res = await fetch(`${API_BASE}/beans/${id}`, {
+            method: 'PUT',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(beanData),
+        });
+        if (!res.ok) throw new Error(`Failed to update bean: ${id}`);
+        return res.json();
+    },
 
     // // 5. DELETE
    async deleteBean(id) {
