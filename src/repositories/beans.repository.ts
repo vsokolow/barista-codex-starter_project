@@ -43,6 +43,10 @@ async function findFileById(id: string): Promise<string | null> { // не экс
 export async function update(id: string, bean: Bean): Promise<Bean | null> {
   const fullPath = await findFileById(id)
   if (!fullPath) return null
+
+  // const existing = await readBean(fullPath) // Нелли на консультации
+  // const bean: Bean = { ...data, id: existing.id, recipes: existing.recipes } //// Нелли на консультации
+
   await fs.writeFile(fullPath, JSON.stringify(bean, null, 2), 'utf-8')
   return bean
 }

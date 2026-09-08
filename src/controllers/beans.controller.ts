@@ -38,6 +38,11 @@ export async function updateBean(req: Request<{ id: string }>, res: Response) {
     const bean = await service.update(req.params.id, req.body)
     res.json(bean)
   } catch (e) {
+      if (e instanceof Error && e.message === 'INVALID_INPUT') {
+      res.status(400).json({ message: 'Title and country are required' })
+      return
+    }
+
     if (e instanceof Error && e.message === 'NOT_FOUND') {
       res.status(404).json({ message: 'Bean not found' })
       return
